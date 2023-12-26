@@ -1,0 +1,2 @@
+# Exclude deployment configuration, which should be mounted as a volume
+deploy/
