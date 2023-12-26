@@ -4,3 +4,19 @@ services:
     image: memcached:alpine
     # launch memcached with 64MB of RAM allocated for the cache
     command: memcached -m 64
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - whm-pg:/var/lib/postgresql/data:rw
+    environment:
+      - POSTGRES_PASSWORD=test
+    ports:
+      - 5432:5432
+
+  whmserver:
+    build: .
+    volumes:
+      - ./deploy/whmserver.json:/whmserver.json:ro
+
+volumes:
+  whm-pg:

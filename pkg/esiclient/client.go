@@ -18,5 +18,5 @@ func CreateCachedTransport(addresses []string) *http.Client {
 }
 
 func CreateClient(addresses []string, userAgent string) *goesi.APIClient {
-	return goesi.NewAPIClient(CreateCachedTransport(addresses),	userAgent);
+	return goesi.NewAPIClient(CreateCachedTransport(addresses), userAgent)
 }
