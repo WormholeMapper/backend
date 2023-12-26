@@ -19,3 +19,5 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
+
+replace github.com/WormholeMapper/whmdb => ./pkg/whmdb
