@@ -1,9 +1,22 @@
 version: "3"
 services:
+
+  caddy:
+    image: caddy:alpine
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile
+
   memcached:
     image: memcached:alpine
     # launch memcached with 64MB of RAM allocated for the cache
     command: memcached -m 64
+
+
   postgres:
     image: postgres:alpine
     volumes:
