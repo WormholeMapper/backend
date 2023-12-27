@@ -1,0 +1,21 @@
+name: "GHCR: clean up containers built for a closed PR"
+on:
+  pull_request:
+    # trigger when PR is closed/merged
+    types: ["closed"]
+    branches: ["main"]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: WormholeMapper/whmserver
+
+jobs:
+  cleanup-old-container:
+    runs-on: [self-hosted]
+    steps:
+      - name: Delete tagged container
+        uses: chipkent/action-cleanup-package@v1.0.3
+        with:
+          package-name: ${{ github.event.repository.name }}
+          tag: pr-${{ github.event.pull_request.number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
