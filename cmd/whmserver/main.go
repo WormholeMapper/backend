@@ -1,6 +1,7 @@
 package main
 
 import (
+	ctx "context"
 	"fmt"
 	"os"
 
@@ -18,5 +19,7 @@ func main() {
 	config := whmcfg.ReadConfigFromFile(configPath)
 	fmt.Println("hello from whmserver")
 	fmt.Printf("read config from %v: %+v\n", configPath, config)
-	esiclient.CreateClient(nil, "Wormhole Mapper dev / Squish Padecain")
+	client := esiclient.CreateClient(nil, "Wormhole Mapper dev / Squish Padecain")
+	status, resp, err := client.ESI.StatusApi.GetStatus(ctx.Background(), nil)
+	fmt.Printf("GET /status: %+v, %+v, %+v", status, resp, err)
 }
