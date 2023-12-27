@@ -1,4 +1,4 @@
-package main
+package whmcfg
 
 import (
 	"encoding/json"

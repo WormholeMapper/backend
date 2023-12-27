@@ -4,7 +4,10 @@ go 1.21.5
 
 replace github.com/WormholeMapper/esiclient => ./pkg/esiclient
 
-require github.com/WormholeMapper/esiclient v0.0.0-00010101000000-000000000000
+require (
+	github.com/WormholeMapper/esiclient v0.0.0-00010101000000-000000000000
+	github.com/WormholeMapper/whmcfg v0.0.0-00010101000000-000000000000
+)
 
 require (
 	github.com/antihax/goesi v0.0.0-20231202031403-498c84423fe8 // indirect
@@ -21,3 +24,5 @@ require (
 )
 
 replace github.com/WormholeMapper/whmdb => ./pkg/whmdb
+
+replace github.com/WormholeMapper/whmcfg => ./pkg/whmcfg
