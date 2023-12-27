@@ -6,8 +6,9 @@ COPY . .
 RUN go mod download && go mod verify
 RUN go build -v -o /usr/local/bin -ldflags "-s" ./...
 
-FROM scratch
+FROM alpine
 
-COPY --from=build /usr/local/bin/whmserver /
+RUN apk --no-cache add ca-certificates
+COPY --from=build /usr/local/bin/whmserver /usr/local/bin/whmserver
 
-CMD ["/whmserver"]
+CMD ["/usr/local/bin/whmserver"]
