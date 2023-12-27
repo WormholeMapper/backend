@@ -16,7 +16,6 @@ services:
     # launch memcached with 64MB of RAM allocated for the cache
     command: memcached -m 64
 
-
   postgres:
     image: postgres:alpine
     volumes:
@@ -27,7 +26,7 @@ services:
       - 5432:5432
 
   whmserver:
-    build: .
+    image: ghcr.io/wormholemapper/whmserver
     volumes:
       - ./deploy/whmserver.json:/whmserver.json:ro
 
